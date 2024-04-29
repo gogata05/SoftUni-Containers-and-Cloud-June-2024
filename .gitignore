@@ -301,7 +301,7 @@ node_modules/
 *.dsw
 *.dsp
 
-# Visual Studio 6 technical files 
+# Visual Studio 6 technical files
 *.ncb
 *.aps
 
@@ -396,3 +396,20 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# terraform
+*.exe
+.terraform/
+data/silences
+data/nflog
+data/lock
+data/wal/000001
+data/wal/000002
+data/wal/000003
+data/nflog
+data/silences
+Exam Preps/20240213/task-3/data/lock
+Exam Preps/20240213/task-3/data/nflog
+Exam Preps/20240213/task-3/data/wal/000002
+Exam Preps/20240213/task-3/data/wal/000001
+Exam Preps/20240213/task-3/data/silences
