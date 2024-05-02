@@ -1,0 +1,18 @@
+# after the app is running one terraform file it is a good practice to separate variables into files
+# create variables.tf and add type and description for every variable
+# create values.tfvars and add values for every variable
+# run the terraform apply with the -var-file=values.tfvars flag
+terraform apply -var-file="values.tfvars"
+# yes
+
+# create outputs in new file: outputs.tf
+# the output looks like that:
+webapp_ips = "4.207.210.65,4.207.210.92,4.207.210.105,4.207.210.114,4.207.210.119,4.207.210.134,20.166.156.224,20.166.159.187,4.207.208.36,4.207.208.113,4.207.208.146,4.207.208.229,20.107.224.39"
+webapp_url = "task-board-gogata05.azurewebsites.net"
+
+# the app was accessible on
+https://task-board-gogata05.azurewebsites.net/
+
+# destroy app
+terraform destroy -var-file="values.tfvars"
+# yes
