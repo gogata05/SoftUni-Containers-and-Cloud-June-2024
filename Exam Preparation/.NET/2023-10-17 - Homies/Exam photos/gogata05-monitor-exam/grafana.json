@@ -1,0 +1,73 @@
+{
+  "datasource": {
+    "type": "prometheus",
+    "uid": "cdkfwzseyatxcc"
+  },
+  "fieldConfig": {
+    "defaults": {
+      "custom": {
+        "lineWidth": 1,
+        "fillOpacity": 80,
+        "gradientMode": "none",
+        "hideFrom": {
+          "tooltip": false,
+          "viz": false,
+          "legend": false
+        }
+      },
+      "color": {
+        "mode": "palette-classic"
+      },
+      "mappings": [],
+      "thresholds": {
+        "mode": "absolute",
+        "steps": [
+          {
+            "color": "green",
+            "value": null
+          },
+          {
+            "color": "red",
+            "value": 80
+          }
+        ]
+      }
+    },
+    "overrides": []
+  },
+  "gridPos": {
+    "h": 8,
+    "w": 12,
+    "x": 0,
+    "y": 0
+  },
+  "id": 1,
+  "options": {
+    "legend": {
+      "showLegend": true,
+      "displayMode": "list",
+      "placement": "bottom",
+      "calcs": []
+    }
+  },
+  "targets": [
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "cdkfwzseyatxcc"
+      },
+      "disableTextWrap": false,
+      "editorMode": "builder",
+      "expr": "probe_http_duration_seconds",
+      "fullMetaSearch": false,
+      "includeNullMetadata": true,
+      "instant": false,
+      "legendFormat": "__auto",
+      "range": true,
+      "refId": "A",
+      "useBackend": false
+    }
+  ],
+  "title": "Panel Title",
+  "type": "histogram"
+}
