@@ -1,0 +1,33 @@
+groups:
+  - name: Connection was slow
+    rules:
+      - alert: SlowConnection
+        expr: probe_http_duration_seconds{phase="connect"} > 0.0025
+        for: 3s
+        labels:
+          severity: warning
+        annotations:
+          summary: "Connection took more than 2.5 milliseconds"
+  
+  #1 alert its usually enough
+  - name: azure-dotnet-application-monitoring
+    rules:
+      - alert: HighHttpRequestRate
+        expr: rate(azure_app_service_http_requests_total{app="url-shortener", environment="production"}[5m]) > 100
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High HTTP request rate in .NET application"
+          description: "The HTTP request rate for the .NET application deployed on Azure ('your-app-name') has exceeded 100 requests per second over the last 5 minutes. Investigate for potential DDoS or prepare to scale resources."
+  
+  - name: http-status-alerts
+    rules:
+      - alert: HttpStatusCodeNot200
+        expr: sum by(instance) (rate(http_requests_total{status_code!="200"}[5m])) > 0
+        for: 1m
+        labels:
+          severity: warning
+        annotations:
+          summary: "HTTP status code not 200 detected"
+          description: "The application on instance {{ $labels.instance }} is responding with HTTP status code not equal to 200 more frequently than expected."

@@ -1,0 +1,84 @@
+.NET
+Check with DiffChecker if there are differences!
+Replace Ctrl+H : homies
+
+- 1.Azure via Docker
+1.1.Build a Custom Image :
+1.1.1.Open with "visual studio 2022" and right click on the "WebProject" and "Docker Support"
+and click "Linix" and "Docker file"
+1.1.2.Copy the "dockerfile" from "Web project" to the "Main root" directory//dir problems
+
+1.1.3.in main root right click "Open in Terminal":
+1.1.3.1.dir
+1.1.3.2.docker build -t homies .
+1.1.3.3.docker images
+1.1.3.4.docker run -p 80:80 homies
+1.1.3.5. cls  -clear terninal
+
+
+1.2.Orchestrate Containers:
+1.2.1.Create Volume: docker volume create sqldata
+1.2.2. docker run -e ACCEPT_EULA=Y -e MSSQL_SA_PASSWORD=myStrongPassword12# -p 1433:1433 -v sqldata:/var/opt/mssql/sqlserver --name sqlserver -d mcr.microsoft.com/mssql/server
+1.2.3.  code .    - to open "vs code" with "terminal"
+1.2.3. Copy/paste "docker-compose.yml" and fix it
+Replace homies
+
+
+
+
+
+Commands:
+# create docker file
+# for .net apps must be automatically created and accurate
+# build image
+
+# test if the app is working (even without database)
+docker run -p 80:80 homies
+# access it on http://localhost:80
+
+# create docker-compose file
+
+# it asks for volume
+docker volume create sqldata
+# this is for local purposes
+
+
+
+
+
+
+# create resource_group(azure login)
+az login
+az group create --name "gogata05homiessrg" --location westeurope
+
+# create azure_container_registry
+az acr create --resource-group gogata05homiessrg --name gogata05homiesscr --sku Basic
+
+# rename the image
+docker tag homies gogata05homiesscr.azurecr.io/homies
+
+# login to the azure registry
+az acr login --name gogata05homiesscr.azurecr.io/homies
+
+# push the image
+docker push gogata05homiesscr.azurecr.io/homies
+
+# check docker contexts:
+docker context ls
+
+# create azure context
+docker context create aci homiescontext
+
+# use azure context
+docker context use homiescontext
+
+# show docker contexts
+docker context show
+
+# add your username as domain name
+# in docker-compose - domainname: gogata05
+docker-compose up -d
+
+# the app must be accessible on
+http://gogata05.westeurope.azurecontainer.io/
+

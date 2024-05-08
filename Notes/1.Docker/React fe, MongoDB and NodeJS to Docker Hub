@@ -1,0 +1,78 @@
+Contains Front-End and Back-End
+Replace "goals" with the resourse folder:  Ctrl+H 
+Stop Grafana in Services cuz it conflict on port 3000
+Start MongoDB in Services
+
+0.Test if the app is working: "npm i","npm start" on both backend/frontend//delete "node_modules" after that
+0.Change mongoose.connect to:
+`mongodb://max:secret@mongodb:27017/course-goals?authSource=admin`
+1.Open terminal in Root folder "goals"
+code .
+
+2.Drag & Drop the 2 Dockerfiles in Front-End and Back-End
+3.Open terminal in "backend" folder and in "frontend" folder:
+for backend:
+"docker build -t goals-backend ."             
+"docker build -t goals-frontend ."          
+docker pull mongodb
+
+4.Check if we have "goals-backend","goals-frontend" and "mongodb" in Images in docker
+
+6.In terminal "frontend" create network:
+docker network create goals
+
+7.In terminal "backend" create Volumes:
+docker volume create data
+docker volume create logs
+docker volume create node_modules
+
+8.In Main terminal type:
+docker run -d --name mongodb --network goals -e MONGO_INITDB_ROOT_USERNAME=max -e MONGO_INITDB_ROOT_PASSWORD=secret -v data:/data/db mongo
+
+docker run -d --name backend --network goals -p 80:80 -v logs:/logs -v node_modules:/node_modules goals-backend
+
+docker run -d --name frontend --network goals -p 3000:3000 -v .\frontend\src:/src goals-frontend
+
+12.Check if in Docker "Containers" we have all 3 containers in green color
+13.Here the app should work locally on port: http://localhost:3000/
+
+14.
+docker login
+
+14.Main terminal
+docker tag goals-backend gogata05/goals-backend
+docker tag goals-backend gogata05/goals-frontend
+docker push gogata05/goals-backend
+docker push gogata05/goals-frontend
+
+15.Check if in docker Hub we have backend and frontend.
+
+::Run docker-compose file!!!!
+docker-compose build
+docker-compose up -d
+
+::Destruction!!!!
+docker-compose down --volumes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+User Rear!
+
+::Remove network
+docker network rm goals

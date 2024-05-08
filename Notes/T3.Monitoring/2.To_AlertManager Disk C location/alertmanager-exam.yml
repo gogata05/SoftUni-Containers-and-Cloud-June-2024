@@ -1,0 +1,10 @@
+route:
+  group_by: ['alertname']
+  group_wait: 30s
+  group_interval: 1m #Change minutes if needed
+  repeat_interval: 1h
+  receiver: 'web.hook'
+receivers:
+  - name: 'web.hook'
+    webhook_configs:
+      - url: 'https://webhook.site/d125454b-bdf8-4cc5-acee-2191e755f7f4' #change the URL
