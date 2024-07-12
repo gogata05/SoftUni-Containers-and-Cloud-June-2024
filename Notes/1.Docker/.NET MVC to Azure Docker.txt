@@ -78,3 +78,7 @@ docker-compose up -d
 # the app must be accessible on
 http://gogata05.westeurope.azurecontainer.io/
 
+Note: In folder: gogata05-docker-exam
+Create images of: url azure deploy,Resource Group, Container registry and the Container Instances.
+Provide the Dockerfile and docker-compose.yaml files. 
+

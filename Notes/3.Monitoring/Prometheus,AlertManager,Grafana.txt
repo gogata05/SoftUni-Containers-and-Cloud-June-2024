@@ -1,0 +1,40 @@
+Set up App Monitoring:
+Check with DiffChecker if there are differences!
+
+##Prometheus + Blackbox
+
+1.Open with "VS Code" as "Administrator" and drag and drop this folder: C:\Program Files\Monitoring
+2.Open terminal 1 in Blackbox and type:
+blackbox_exporter.exe
+3.Edit the: Prometheus-exam.yml,alert-rules-exam.yml and alertmanager-exam.yml files where comments exist and rename files if needed
+4.Usually Edit by:
+- Change deployed URL in .yml
+- Change #copy and change "Your unique URL" from https://webhook.site
+- Check for minutes or something else in requirements
+5.Open terminal 2 in Prometheus and type:   
+prometheus.exe --config.file prometheus-exam.yml
+6. Check if Prometheus works on: localhost:9090 ->"Status"->"Targets" //You should see URL - with "Up" State status
+
+##AlertManager
+1.Go to: https://webhook.site and copy "Your unique URL" and copy it in: alertmanager-exam.yml on #change the URL comment
+2.Open terminal 3 in AlertManager and type:
+alertmanager.exe --config.file alertmanager-exam.yml
+3.Check if AlertManager works on: localhost:9093
+4.Check if Alerts works on Prometheus: localhost:9090 ->"Alerts" //You should see working alerts here
+
+##Grafana:
+1.Login to Grafana on http://localhost:3000/ with: admin - Chelsea05 //Use "Incognito" mode to prevent fetch errors
+2.In "Connections"->"Add new connection"->"Prometheus"->"Add new data source"->"Connection"-"http://localhost:9090/"->"Save & test"
+3.In "Dashboard"->"New"->"New dashboard"->"Add Visualization"->Select Prometheus-> 
+4.In: "Time series"->"Histogram"
+5.On "Metric"->"probe_http_duraction_seconds"->"Run queries" //You should see Histogram grapha here
+6.Click "Save'
+7.Copy json from Inspect->Panel Json
+
+
+Requirement:
+1.Make a folder called: gogata05-task-3
+2.Copy all 3 .yml files called "Exam" inside folder
+3.Copy JSON from Grafana: "Dashboard"->Graph->"Inspect"->"Panel JSON"->Copy
+
+

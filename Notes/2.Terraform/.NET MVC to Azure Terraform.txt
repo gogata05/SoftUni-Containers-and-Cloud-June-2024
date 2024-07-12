@@ -1,0 +1,29 @@
+.NET MVC
+Check with DiffChecker if there are differences!
+
+- 1.Azure via Terraform
+1.new repo: Extract zip->Open with "VS Code"->init public repo with commit "init repo" to github
+2.Drag & Drop Terraform folder
+3.Edit "values.tfvars" with the "appsetting.json"
+4. open terminal in "Terraform"
+5. terraform init
+
+//Build
+6. terraform fmt
+7. terraform validate
+
+8. terraform apply -var-file="values.tfvars"
+
+
+
+terraform destroy -var-file=values.tfvars - if much errors
+
+
+//problem with region restriction
+
+
+
+
+Note: if errors use documentation: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mssql_database
+
+Note: Change .NET Version in main.tf if needed

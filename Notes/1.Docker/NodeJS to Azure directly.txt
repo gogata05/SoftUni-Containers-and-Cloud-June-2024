@@ -1,0 +1,36 @@
+Ctrl+H - readinglist
+Use less demand region like: Italy North
+
+1.new repo: In "VS Code" commit "init repo" with NodeJS resourses and commit to github
+2.Search and create in Azure: "Web App + Database"
+3.Choose: Name: readinglistgogata05,Node 18 LTS,COSMOS DB API for MongoDB,Cache: No,Basic Plan,->Review+create
+4.The Deployment takes 20 mins so you can go to Task 2 for a while
+
+//Copy MongoDB Connection String: 
+5.Search in Azure: "App Services"->Double click->"Settings"->"Environment variables"->"Connection strings"->Double click->"Copy to clipboard": "Value"
+//Add the MongoDB Connection String Environment in: "Environment variables"->"App settings:
+6."App setting"->"Add"->"Name"-"DATABASE_URL"->"Value"-MongoConnection String->"Apply"->"Apply"->"Save" //check if in ".env.sample" nodeJS resourse "DATABASE_URL" exists!
+
+
+//Deploy
+9.Search in Azure: "App Service" -> "Deployment"-> "Deployment Center"
+10.Click: "Source"-"Github"->"Organization"-"gogata05"->"Repository"-"task1"->"Basic authentication"->"Save"
+11.Go to: "App Service" -> "Deployment"-> "Deployment Center" or and to wait for the Deploy - takes 20 mins so you can go to Task 2 for a while
+12.Open the Url in: "App Service" ->"Overview"
+
+
+
+Requirements:
+1.Make 4 screenshots: all with "visible values":
+"Resource Group"
+"App Service"
+"MongoDB ConnectionString-"App Service"->"Settings"->"Environment variables"-DATABASE_URL
+"url"  - 
+
+2.Add the URL in a .txt file
+3.Place all in folder: gogata-task-1
+
+
+
+
+Note:Watch out for the "Save" Buttons in azure
