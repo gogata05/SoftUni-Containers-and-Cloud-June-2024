@@ -12,11 +12,12 @@ Check with DiffChecker if there are differences!
 6. terraform fmt
 7. terraform validate
 
-8. terraform apply -var-file="values.tfvars"
+8  terraform plan -var-file="values.tfvars"
+9. terraform apply -var-file="values.tfvars"
 
 
 
-terraform destroy -var-file=values.tfvars - if much errors
+terraform destroy -var-file="values.tfvars"      - if errors
 
 
 //problem with region restriction
