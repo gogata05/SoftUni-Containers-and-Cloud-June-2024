@@ -1,0 +1,115 @@
+Contains Front-End and Back-End - React with MongoDB + NodeJS
+Check with DiffChecker if there are differences!
+
+Stop "Grafana" in "Services" cuz it conflict on port 3000
+Start MongoDB in Services
+
+0.Test if the app is working: "npm i","npm start" on both backend/frontend//delete "node_modules" after that
+
+//Start with Docker
+1.Open main root folder with VS Code
+2.Search: "mongoose.connect" and replace connection string with: `mongodb://max:secret@mongodb:27017/course-goals?authSource=admin`
+2.Drag & Drop the 2 Dockerfiles and the "docker-compose" - in Front-End, Back-End and main root
+3.Remove the "-BE", "-FE" part of the Dockerfiles names
+4.Replace "goals" in "docker-compose"
+5.in main root:
+docker-compose up -d --build 
+
+Note: If you make mistake delete everything in:
+"Docker Desktop" and
+C:\Users\Georgi Markov\.docker
+
+Note: Use "Task Manager" if problems
+
+
+
+Requirements:
+1.Make gogata05-task-1 folder
+2.Make a screenshot of localhost3000 working app
+3.Add 4 files:
+Copy/paste the 2 Dockerfiles, the docker-compose.yml file and the Screenshot
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Slowly:
+-----------------------------------------------------------------------------------------------------------------------------------------
+//Images
+1.Open main root folder with VS Code
+2.Drag & Drop the 2 Dockerfiles in Front-End and Back-End
+3.Remove the "-BE", "-FE" part of the Dockerfiles names
+4.Open terminal in: "backend" and "frontend":
+be- "docker build -t goals-backend ."             
+fe- "docker build -t goals-frontend ."          
+be- docker pull mongo
+
+5.Check if we have "goals-backend","goals-frontend" and "mongo" in Images in docker
+
+//Volumes
+6.In terminal "front-end" create Volumes:
+fe- docker network create goals
+
+7.In terminal "backend" create Volumes:
+be- docker volume create data
+be- docker volume create logs
+be- docker volume create node_modules
+
+//Containers
+8.In Main terminal type:
+docker run -d --name mongodb --network goals -e MONGO_INITDB_ROOT_USERNAME=max -e MONGO_INITDB_ROOT_PASSWORD=secret -v data:/data/db mongo
+
+docker run -d --name backend --network goals -p 80:80 -v logs:/logs -v node_modules:/node_modules goals-backend
+
+docker run -d --name frontend --network goals -p 3000:3000 -v .\frontend\src:/src goals-frontend
+
+12.Check if in Docker "Containers" we have all 3 containers in green color
+13.Here the app should work locally on port: http://localhost:3000/
+
+14.
+docker login
+
+14.Main terminal
+docker tag goals-backend gogata05/goals-backend
+docker tag goals-backend gogata05/goals-frontend
+docker push gogata05/goals-backend
+docker push gogata05/goals-frontend
+
+15.Check if in docker Hub we have backend and frontend.
+
+//Run docker-compose file!!!!
+docker-compose build
+docker-compose up -d
+
+//Destruction
+docker-compose down --volumes
+
+
+
+Note: If you make mistake delete everything in:
+"Docker Desktop" and
+C:\Users\Georgi Markov\.docker
+
+
+User Rear!
+
+::Remove network
+docker network rm goals
