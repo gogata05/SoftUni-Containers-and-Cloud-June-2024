@@ -1,29 +1,87 @@
 .NET MVC
 Check with DiffChecker if there are differences!
-Replace Ctrl+H : homies
+Replace Ctrl+H : homies // in vs code
 
 #1.Azure via Docker: 
-- Build a Custom Image 
+- Build a Custom Image - Add image to Docker
 - Create Image:
-1.Ctrl+F5    - Check if the App is running
-2.Open with "visual studio 2022" and right click on your Web project "homies" -> "Docker Support" -> "Linix" -> "Docker file"
+1.Open with "visual studio 2022" the project and Ctrl+F5 - Check if the App is running
+2.In "visual studio 2022" and right click on your Web project-> "Add" -> "homies" -> "Docker Support" -> "Linix" -> "Docker file"
 3.Copy the "dockerfile" from your Web project to the "Main root" directory to prevent problems
 
-4.Open with "Vs Code' and "Open Terminal" in root
+4.Add the "docker-compose.yml" file in root
+5.Open with "Vs Code' and "Open Terminal" in root
+
+- Short Version:
+
+
+
+# Create Docker Image:
+docker build -t gogata05homiesscr.azurecr.io/homies .
+
+# Login in Azure and create a resourse group:
+az login
+az group create --name "gogata05homiessrg" --location westeurope
+
+# Create Azure Container Registry (ACR):
+az acr create --resource-group gogata05homiessrg --name gogata05homiesscr --sku Basic
+
+# Login in ACR:
+az acr login --name gogata05homiesscr
+
+# Tagging and uploading Docker Image in ACR:
+docker tag homies gogata05homiesscr.azurecr.io/homies
+docker push gogata05homiesscr.azurecr.io/homies
+
+# Create Azure Container Instance (ACI) for the web app:
+az container create --resource-group gogata05homiessrg --name gogata05homiesaci --image gogata05homiesscr.azurecr.io/homies --dns-name-label gogata05 --ports 80
+
+# get the Image Registry username and password:
+az acr update -n gogata05homiesscr --admin-enabled true
+az acr credential show --name gogata05homiesscr
+
+# Enter the Image Registry username and password:
+# Image registry username: gogata05homiesscr
+# Image registry password: longpasswordHeresgsgsgsgsgsgsgsgs3535rssgggggsgsgsgsgegegegsgey4yy4y4y4yghsgh
+
+# the app must be accessible on:
+http://gogata05.westeurope.azurecontainer.io/
+
+Note: In folder: gogata05-docker-exam
+Create images of: url azure deploy,Resource Group, Container registry and the Container Instances.
+Provide the Dockerfile and docker-compose.yaml files. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- Long version:
+
 5.dir
 6.docker build -t homies .
-7.docker images
+7.docker images     - check if there is an image created in Docker
 
 8.docker run -p 80:80 homies - not needed
 9.cls  - clear terminal - not needed
 
 
-- Orchestrate Containers:
+- Orchestrate Containers: - Add Volume to Docker
 - Create Volume: docker volume create sqldata
-1.Copy/paste "docker-compose.yml" and fix it
+1.Copy/paste "docker-compose.yml" to root and fix it
 2.Replace "homies" everywhere
-
-
 
 - Create Azure Container Registry 
 - Create a resource group and a container registry.
@@ -44,7 +102,7 @@ az group create --name "gogata05homiessrg" --location westeurope
 az acr create --resource-group gogata05homiessrg --name gogata05homiesscr --sku Basic
 
 # docker login
-docker login azure
+docker login azure            //gogata05,Chelsea05
 
 # rename the image
 docker tag homies gogata05homiesscr.azurecr.io/homies
@@ -60,7 +118,7 @@ docker push gogata05homiesscr.azurecr.io/homies
 docker context ls
 
 # create azure context
-docker context create aci homiescontext
+docker context create ////docker context create aci homiescontext   //to delete//docker context rm homiescontext
 
 # check docker contexts:
 docker context ls
@@ -73,12 +131,13 @@ docker context show
 
 # add your username as domain name
 # in docker-compose - domainname: gogata05
-docker-compose up -d
+docker-compose up -d // add docker-compose.yml
 
 # the app must be accessible on
 http://gogata05.westeurope.azurecontainer.io/
 
-Note: In folder: gogata05-docker-exam
-Create images of: url azure deploy,Resource Group, Container registry and the Container Instances.
-Provide the Dockerfile and docker-compose.yaml files. 
+
+
+
+
 

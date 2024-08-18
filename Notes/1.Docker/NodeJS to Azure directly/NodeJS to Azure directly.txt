@@ -3,13 +3,14 @@ Use less demand region like: Italy North
 
 1.new repo: In "VS Code" commit "init repo" with NodeJS resourses and commit to github
 2.Search and create in Azure: "Web App + Database"
-3.Choose: Name: readinglistgogata05,Node 18 LTS,COSMOS DB API for MongoDB,Cache: No,Basic Plan,->Review+create
+3.Choose: Name: readinglistgogata05,Node 20 LTS,COSMOS DB API for MongoDB,Cache: No,Basic Plan,->Review+create
 4.The Deployment takes 20 mins so you can go to Task 2 for a while
 
 //Copy MongoDB Connection String: 
 5.Search in Azure: "App Services"->Double click->"Settings"->"Environment variables"->"Connection strings"->Double click->"Copy to clipboard": "Value"
 //Add the MongoDB Connection String Environment in: "Environment variables"->"App settings:
-6."App setting"->"Add"->"Name"-"DATABASE_URL"->"Value"-MongoConnection String->"Apply"->"Apply"->"Save" //check if in ".env.sample" nodeJS resourse "DATABASE_URL" exists!
+6."App setting"->"Add"->"Name"-"DATABASE_URL"->"Value"-the Mongo Connection String from AZURE COSMOS Connection strings->"Apply"->"Apply"->"Confirm" //check if in ".env.sample" nodeJS resourse "DATABASE_URL" exists!
+7."App setting"->"Add"->"Name"-"DATABASE_NAME"->"Value"-"readinglistgogata05-database"->"Apply"->"Apply"->"Confirm" //check if in ".env.sample" nodeJS resourse "DATABASE_NAME" exists!
 
 
 //Deploy

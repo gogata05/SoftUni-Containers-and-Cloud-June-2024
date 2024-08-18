@@ -1,74 +1,50 @@
-variable "prefix" {
+// Terraform\variables.tf
+variable "resource_group" {
   type        = string
-  description = "The prefix used for all resources in Azure"
+  description = "The name of the resource group"
 }
 
-variable "app_name" {
+variable "location" {
   type        = string
-  description = "The name of the application"
+  description = "The location of the resource group"
 }
 
-variable "resource_group_name" {
+variable "app_service_plan" {
   type        = string
-  description = "Resource group postfix"
+  description = "The name of the app service plan"
 }
 
-variable "resource_group_location" {
+variable "app_service_name" {
   type        = string
-  description = "Resource group location"
-}
-
-variable "service_plan_name" {
-  type        = string
-  description = "Service plan postfix"
-}
-
-variable "web_app_name" {
-  type        = string
-  description = "Web app postfix"
+  description = "The name of the app service"
 }
 
 variable "sql_server_name" {
   type        = string
-  description = "SQL server postfix"
+  description = "The name of the sql server"
 }
 
-variable "administrator_login" {
+variable "database" {
   type        = string
-  description = "SQL server administrator login"
+  description = "The name of the database"
 }
 
-variable "administrator_login_password" {
+variable "sql_admin" {
   type        = string
-  description = "SQL server administrator login password"
+  description = "sql user"
 }
 
-variable "database_name" {
+variable "sql_user_pass" {
   type        = string
-  description = "Database name"
+  description = "sql user pass"
 }
 
-variable "firewall_name" {
+variable "firewall" {
   type        = string
-  description = "Firewall rule name"
+  description = "The name of the firewall"
 }
 
-variable "start_ip_address" {
+variable "github_repo" {
   type        = string
-  description = "Start IP address"
-}
-
-variable "end_ip_address" {
-  type        = string
-  description = "End IP address"
-}
-
-variable "repo_url" {
-  type        = string
-  description = "Github repo url"
-}
-
-variable "branch_name" {
-  type        = string
-  description = "Branch name (default: main)"
+  description = "The name of the github repo"
 }

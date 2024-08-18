@@ -14,17 +14,33 @@ Check with DiffChecker if there are differences!
 
 8  terraform plan -var-file="values.tfvars"
 9. terraform apply -var-file="values.tfvars"
+//Its takes 20mins, Go to task 1 or 3 if possible
+
+
+terraform destroy -var-file="values.tfvars"      - if errors // or delete "resourse group" in Azure// and delete the new terraform newly created files
+
+10. https://homiesgogata05app.azurewebsites.net/ - wait for 10-60mins deploying
+
+
+//change region if region problem
 
 
 
-terraform destroy -var-file="values.tfvars"      - if errors
-
-
-//problem with region restriction
-
-
-
-
-Note: if errors use documentation: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mssql_database
+Note: if errors use the configuration resource keyword error and documentation: https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs
 
 Note: Change .NET Version in main.tf if needed
+Note: Change the "azurerm" version in main.tf to the documentation latest version.
+
+
+
+
+
+
+Common configuration resource keywords for documentation:
+azurerm_resource_group 
+azurerm_service_plan
+azurerm_linux_web_app
+azurerm_mssql_server
+azurerm_mssql_database
+azurerm_mssql_firewall_rule
+azurerm_app_service_source_control

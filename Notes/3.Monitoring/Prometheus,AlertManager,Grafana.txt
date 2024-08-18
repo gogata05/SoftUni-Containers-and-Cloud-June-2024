@@ -23,11 +23,12 @@ alertmanager.exe --config.file alertmanager-exam.yml
 4.Check if Alerts works on Prometheus: localhost:9090 ->"Alerts" //You should see working alerts here
 
 ##Grafana:
+0.Turn on Grafana in Services
 1.Login to Grafana on http://localhost:3000/ with: admin - Chelsea05 //Use "Incognito" mode to prevent fetch errors
 2.In "Connections"->"Add new connection"->"Prometheus"->"Add new data source"->"Connection"-"http://localhost:9090/"->"Save & test"
 3.In "Dashboard"->"New"->"New dashboard"->"Add Visualization"->Select Prometheus-> 
 4.In: "Time series"->"Histogram"
-5.On "Metric"->"probe_http_duraction_seconds"->"Run queries" //You should see Histogram grapha here
+5.On "Metric"->"probe_http_duration_seconds"->"Run queries" //You should see Histogram grapha here
 6.Click "Save'
 7.Copy json from Inspect->Panel Json
 
